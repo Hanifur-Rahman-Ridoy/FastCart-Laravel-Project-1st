@@ -58,6 +58,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/add-unit', [UnitController::class, 'addUnit'])->name('add-unit');
     Route::get('/unit-list', [UnitController::class, 'unitList'])->name('unit-list');
     Route::post('/add-unit', [UnitController::class, 'newUnit'])->name('new-unit');
+    Route::get('/delete-unit/{deleteId}', [UnitController::class, 'deleteUnit'])->name('delete-unit');
+    Route::get('/edit-unit/{editId}', [UnitController::class, 'editUnit'])->name('edit-unit');
+    Route::post('/update-unit', [UnitController::class, 'updateUnit'])->name('update-unit');
 
     // Products Route
     Route::get('/add-product', [ProductController::class, 'addProduct'])->name('add-product');

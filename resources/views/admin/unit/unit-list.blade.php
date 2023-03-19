@@ -35,11 +35,14 @@ admin | unit list
                                 </thead>
 
                                 <tbody>
+                                    @foreach ($units as $unit )
+                                        
+                                   
                                     <tr>
-                                        <td>1</td>
-                                        <td>Apple</td>
-                                        <td>Lorem ipsum dolor</td>
-                                        <td>Published</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $unit->name }}</td>
+                                        <td>{!! $unit->description !!}</td>
+                                        <td>{{ $unit->status == 1 ? 'Published':'Unpublished' }}</td>
                                         <td>
                                             <ul>
                                                 <li>
@@ -49,14 +52,13 @@ admin | unit list
                                                 </li>
 
                                                 <li>
-                                                    <a href="javascript:void(0)">
+                                                    <a href="{{ route('edit-unit',['editId' =>$unit->id]) }}">
                                                         <i class="ri-pencil-line"></i>
                                                     </a>
                                                 </li>
 
                                                 <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModalToggle">
+                                                    <a href="{{ route('delete-unit',['deleteId' => $unit->id]) }}">
                                                         <i class="ri-delete-bin-line"></i>
                                                     </a>
                                                 </li>
@@ -64,7 +66,7 @@ admin | unit list
                                         </td>
                                     </tr>
 
-                                   
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
